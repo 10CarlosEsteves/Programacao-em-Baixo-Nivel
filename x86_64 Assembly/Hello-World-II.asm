@@ -16,9 +16,9 @@ _start:                          ; Outro rótulo, dessa vez para definir um proc
     xor rdi,rdi                  ; Usando rdi XOR rdi, o resultado será 0, logo o parametro de exit() será 0, indicando ao SO que não houve problemas.
     syscall                      ; Chamada do sistema.
     
-;Geralmente, ao executarmos algo em assembly, precisamos pedir permissão primeiro ao SO para então utilizar o hardware. Essa comunicação com o SO se dá por
-;meio das chamadas de sistema e essas chamadas de sistemas são funções(ou procedimentos) com parametros. No primeiro syscall, em RAX colocamos 1 indicando 
-;que chamariamos a função write e assim, os parametros que passamos a ela foram aonde deve ser escrito, o endereço do que deve ser escrito e quanto deve ser
-;escrito indicao por RDI, RSI e RDX respectivamente.
+;Geralmente, ao executarmos algo em assembly, precisamos pedir permissão primeiro ao SO para então utilizar parte do hardware. Essa comunicação com o SO 
+;se dá por meio das chamadas de sistema e essas chamadas de sistemas são funções(ou procedimentos) com parametros. No primeiro syscall, em RAX colocamos 1
+;indicando que chamariamos a função write e assim, os parametros que passamos a ela foram aonde deve ser escrito, o endereço do que deve ser escrito e 
+;quanto deve ser escrito indicao por RDI, RSI e RDX respectivamente.
  
     
