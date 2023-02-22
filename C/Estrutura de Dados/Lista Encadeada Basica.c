@@ -65,7 +65,7 @@ int main()
             break;
         }
 
-    } while (escolha != 4);
+    } while (escolha != 3);
 
     return 0;
 }
