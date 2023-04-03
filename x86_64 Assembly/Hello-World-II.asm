@@ -1,13 +1,13 @@
 global _start
 
-section .data                    ; Define o trecho como uma sessão de dados
+section .data                    ; Define o trecho como uma sessão de variáveis
 message: db 'Hello, World!', 10  ; message é um rótulo, apelido para endereço de memória. db informa que message é um dado tipo byte. 'Hello, World!' é a
                                  ; nossa string e ,10 é o caractere quebra de linha do ASCII.
-section .text                    ; Define o trecho como sessão de texto, na prática, isso serve apenas para estruturar o código.
+section .text                    ; Define o trecho como sessão de instruções, na prática, isso serve apenas para estruturar o código.
 
 _start:                          ; Outro rótulo, dessa vez para definir um procedimento em ASM. Nosso objetivo é chamar o SO e imprimir na tela uma message.
-    mov rax, 1                   ; RAX funciona armazenando o código da chamada do sistema, no caso, estamos chamando o write(). 
-    mov rdi, 1                   ; RSD, registrador que armazena aonde deve ser enviado nossa string. No caso, 1 significa stdout, ou seja, a tela.
+    mov rax, 1                   ; RAX funciona armazenando o código da chamada do sistema, no caso, estamos chamando o código write(). 
+    mov rdi, 1                   ; RDI, registrador que armazena aonde deve ser escrita nossa string. No caso, 1 significa stdout, ou seja, a tela.
     mov rsi, message             ; RSI, registrador que armazena aonde se encontra a string.
     mov rdx, 14                  ; RDX, registrador que funciona armazenando o tamanho em byte da nossa string.
     syscall                      ; Finalmente a chamada do sistema operacional.
