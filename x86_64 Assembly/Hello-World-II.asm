@@ -7,7 +7,7 @@ section .text                    ; Define o trecho como sessão de instruções,
 
 _start:                          ; Outro rótulo, dessa vez para definir um procedimento em ASM. Nosso objetivo é chamar o SO e imprimir na tela uma message.
     mov rax, 1                   ; RAX funciona armazenando o código da chamada do sistema, no caso, estamos chamando o código write(). 
-    mov rdi, 1                   ; RDI, registrador que armazena aonde deve ser escrita nossa string. No caso, 1 significa stdout, ou seja, a tela.
+    mov rdi, 1                   ; RDI, registrador que armazena aonde deve ser escrita nossa string. No caso, 1 significa o descritor stdout, ou seja, a tela.
     mov rsi, message             ; RSI, registrador que armazena aonde se encontra a string.
     mov rdx, 14                  ; RDX, registrador que funciona armazenando o tamanho em byte da nossa string.
     syscall                      ; Finalmente a chamada do sistema operacional.
