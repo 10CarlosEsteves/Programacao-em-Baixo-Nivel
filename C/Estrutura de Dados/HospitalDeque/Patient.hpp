@@ -24,7 +24,7 @@ class Patient{
         void setName(string newName);
         void setPassword(int newPassword);
         void setNextPatient(Patient* newNextPatient);
-		void setPatient(char newCondition, string newName, int newPassword, Patient* newNextPatient);
+	void setPatient(char newCondition, string newName, int newPassword, Patient* newNextPatient);
         
         //Funções Getters
         char getCondition() const;
@@ -32,8 +32,8 @@ class Patient{
         int getPassword() const;
         Patient* getNextPatient() const;
         
-		//Funções ordinárias
-		void PrintInfo() const;
+	//Funções ordinárias
+	void PrintInfo() const;
 };
 
 
