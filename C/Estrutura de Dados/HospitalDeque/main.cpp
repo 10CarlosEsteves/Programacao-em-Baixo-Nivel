@@ -7,12 +7,7 @@ using namespace std;
 
 int main(){
 	
-	Patient paci1('M', "Tess Teiges", 1001, NULL), paci2('M', "Aleglande de Moraes", 1002, NULL);
-	
-
-	
-	
-	
+	Patient paci1('M', "Wolfgang", 1001, NULL), paci2('M', "Gunther", 1002, NULL);
 	
 	return 0;
 }
