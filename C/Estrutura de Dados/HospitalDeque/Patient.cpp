@@ -1,5 +1,9 @@
+#include <iostream>
+#include <cctype>
+
 #include "Patient.hpp"
 
+using namespace std;
 
 Patient::Patient(){
 	condition = '0';
@@ -9,13 +13,30 @@ Patient::Patient(){
 }
 
 Patient::Patient(char newCondition, string newName){
-	condition = newCondition;
-	name = newName;
-	password = 0;
-	nextPatient = NULL;
+	setCondition(newCondition);
+	setName(newName);
+	setPassword(0);
+	setNextPatient(NULL);
+
 }
 
+Patient::Patient(char newCondition, string newName, int newPassword, Patient* newNextPatient){
+	setCondition(newCondition);
+	setName(newName);
+	setPassword(newPassword);
+	setNextPatient(newNextPatient);
+}
+
+
 void Patient::setCondition(char newCondition){
+
+	newCondition = toupper(newCondition);
+	
+	if(newCondition != 'M' and newCondition !='G'){
+		cout<<"ERROR: Condicao inserida eh invalida"<<endl;
+		exit(1);
+	}
+	
 	condition = newCondition;
 }
 
@@ -31,29 +52,32 @@ void Patient::setNextPatient(Patient* newNextPatient){
 	nextPatient = newNextPatient;
 }
 
+void Patient::setPatient(char newCondition, string newName, int newPassword, Patient* newNextPatient){
+	setCondition(newCondition);
+	setName(newName);
+	setPassword(newPassword);
+	setNextPatient(newNextPatient);
+}
 
-char Patient::getCondition(){
+char Patient::getCondition() const {
 	return condition;
 }
 
-string Patient::getName(){
+string Patient::getName()const {
 	return name;
 }
 
-int Patient::getPassword(){
+int Patient::getPassword() const {
 	return password;
 }
 
-Patient* Patient::getNextPatient(){
+Patient* Patient::getNextPatient() const {
 	return nextPatient;
 }
 
 
-void Patient::PrintInfo(){
-	cout<<"-----------------------------"<<endl;
+void Patient::PrintInfo() const {
 	cout<<"NOME: "<<name<<endl;
 	cout<<"CONDICAO: "<<condition<<endl;
 	cout<<"SENHA: "<<password<<endl;
-	cout<<"PROXIMO PACIENTE: "<<nextPatient->getName()<<endl;	
 }
-
