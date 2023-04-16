@@ -1,13 +1,24 @@
 #include <iostream>
+#include <cstdlib>
 
 #include "Patient.hpp"
+#include "HospitalDeque.hpp"
 
 using namespace std;
 
-
 int main(){
 	
-	Patient paci1('M', "Wolfgang", 1001, NULL), paci2('M', "Gunther", 1002, NULL);
+	system("color 0A");
+	
+	HospitalDeque vavilov("VAVILOV");
+
+	vavilov.AddBegin('m', "Carlos");
+	vavilov.AddEnd('G', "Mike OHearn");
+	vavilov.AddEnd('m', "Charles");
+	vavilov.AddBegin('g', "Rafik");
+
+	
+	vavilov.PrintAllDeque();
 	
 	return 0;
 }
