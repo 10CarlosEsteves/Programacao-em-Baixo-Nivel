@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-#define MAX_SIZE 100
-
 using namespace std;
 
 class Patient{
@@ -26,19 +24,18 @@ class Patient{
         void setName(string newName);
         void setPassword(int newPassword);
         void setNextPatient(Patient* newNextPatient);
+		void setPatient(char newCondition, string newName, int newPassword, Patient* newNextPatient);
         
         //Funções Getters
-        char getCondition();
-        string getName();
-        int getPassword();
-        Patient* getNextPatient();
+        char getCondition() const;
+        string getName() const;
+        int getPassword() const;
+        Patient* getNextPatient() const;
         
-        //Funções de Tester
-        void PrintInfo();
-        
-        
-        
+		//Funções ordinárias
+		void PrintInfo() const;
 };
+
 
 
 #endif
