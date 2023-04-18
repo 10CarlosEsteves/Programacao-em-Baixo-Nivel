@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -8,26 +9,30 @@ void Swap(int& var1, int& var2);
 void Preencha(int arr[], int size);
 void BubbleSort(int arr[], int size);
 void SelectionSort(int arr[], int size);
-
+int* Extratora(string nomeDoArquivo, int& size);
 
 
 int main(){
 
-    int tam;
+    int size = 0;
+    int *vetor = Extratora("jsonCozido", size);
 
-    cout<<"Por favor, digite o tamanho do vetor: ";cin>>tam;
+	cout<<"VETOR ANTES: "<<endl;
+    Print(vetor, size);
+    
+    SelectionSort(vetor, size);
+    
+    cout<<"\nVETOR DEPOIS: "<<endl;
+    Print(vetor, size);
 
-
-    int* vetor = new int[tam];
-
-    Preencha(vetor, tam);
-
-	Print(vetor, tam);
-    SelectionSort(vetor, tam);
-    Print(vetor, tam);
 
     return 0;
 }
+
+
+
+
+
 
 
 void Print(int arr[], int size){
@@ -81,4 +86,37 @@ void SelectionSort(int arr[], int size){
         }
         Swap(arr[times], arr[pos]);
 	}
+}
+
+int* Extratora(string nomeDoArquivo, int& tamanho){
+
+    ifstream entradaDeNumeros;
+    int numeroExtraido;
+
+    entradaDeNumeros.open(nomeDoArquivo + ".txt");
+
+    if(entradaDeNumeros.is_open()==false){
+    	cout<<"Error: Falha ao abrir o arquivo"<<endl;
+    	exit(1);
+	}
+
+    while (entradaDeNumeros>>numeroExtraido){
+        tamanho++;
+    }
+    
+    entradaDeNumeros.close();
+    entradaDeNumeros.open(nomeDoArquivo + ".txt");
+    
+    
+    int* vetor = new int [tamanho];
+    int  indice = 0;
+    
+    while (entradaDeNumeros>>numeroExtraido){
+        vetor[indice] = numeroExtraido;
+		indice++;
+    }
+
+    entradaDeNumeros.close();
+
+    return vetor;
 }
